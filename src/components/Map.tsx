@@ -43,10 +43,8 @@ function GetCoordinates() {
 
 export default function Map() {
   //** Last option to put the name of the states
-  const position: LatLngExpression = [20.63087146186356, -103.2211034886408];
-  const [mexicoMunicipiosGeoJSON, setMexicoMunicipiosGeoJSON] = useState<
-    MexicoFeature[]
-  >([]);
+  const position: LatLngExpression = [20.63087146186356, -102.2211034886408];
+  const [mexicoMunicipiosGeoJSON, setMexicoMunicipiosGeoJSON] = useState<MexicoFeature[]>([]);
 
   useEffect(() => {
     // Transform the raw GeoJSON data to ensure each feature has the correct structure
@@ -63,9 +61,9 @@ export default function Map() {
   return (
     <MapContainer
       center={position}
-      zoom={4.5}
+      zoom={3.5}
       scrollWheelZoom={false}
-      style={{ height: "650px", width: "800px", borderRadius: "5px" }}
+      style={{ height: "400px", width: "800px", borderRadius: "5px" }}
       attributionControl={false} // Hide the default attribution control
       doubleClickZoom={false}
       dragging={false}
@@ -73,9 +71,12 @@ export default function Map() {
     >
       <GetCoordinates />
       <TileLayer
+      
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         url="https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png"
+
+
       />
       {mexicoMunicipiosGeoJSON.length > 0 && (
         <GeoJSON
@@ -85,13 +86,13 @@ export default function Map() {
           style={{ color: "red" }}
         />
       )}
-      {/* Render GeoJSON only if data is available */}
       <Marker position={position}>
         <Popup>
           This Marker icon is displayed correctly with{" "}
           <i>leaflet-defaulticon-compatibility</i>.
         </Popup>
       </Marker>
+
     </MapContainer>
   );
 }
