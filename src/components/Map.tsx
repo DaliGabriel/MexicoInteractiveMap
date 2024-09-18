@@ -1,11 +1,8 @@
 "use client";
-
 // IMPORTANT: the order matters!
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css";
 import "leaflet-defaulticon-compatibility";
-import { features } from "../app/data/mexicoHigh.json";
-
 import {
   MapContainer,
   Marker,
@@ -15,7 +12,22 @@ import {
   GeoJSON,
 } from "react-leaflet";
 import { LatLngExpression } from "leaflet"; // Import LatLngExpression
+import { Feature, Geometry, MultiPolygon, Polygon } from "geojson";
+// Import your GeoJSON data
+import rawGeoJSONData from "../app/data/mexicoHigh.json";
 import { useEffect, useState } from "react";
+
+// Define more specific types for your GeoJSON features
+type MexicoGeometry = MultiPolygon | Polygon;
+
+type MexicoProperties = {
+  name: string;
+  id: string;
+  CNTRY: string;
+  TYPE: string;
+};
+
+type MexicoFeature = Feature<MexicoGeometry, MexicoProperties>;
 
 function GetCoordinates() {
   const map = useMapEvents({
@@ -30,20 +42,23 @@ function GetCoordinates() {
 }
 
 export default function Map() {
-
   //** Last option to put the name of the states
-  const position: LatLngExpression = [20.63087146186356, -103.2211034886408]; // Explicitly type position
-  const [mexicoMunicipiosGeoJSON, setMexicoMunicipiosGeoJSON] = useState(features);
+  const position: LatLngExpression = [20.63087146186356, -103.2211034886408];
+  const [mexicoMunicipiosGeoJSON, setMexicoMunicipiosGeoJSON] = useState<
+    MexicoFeature[]
+  >([]);
 
-  // useEffect(() => {
-  //   // Fetch GeoJSON data from the provided URL
-  //   fetch(
-  //     "https://raw.githubusercontent.com/angelnmara/geojson/master/mexicoHigh.json"
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => setMexicoMunicipiosGeoJSON(data))
-  //     .catch((error) => console.error("Error fetching GeoJSON:", error));
-  // }, []); // Empty dependency array ensures fetching only once on component mount
+  useEffect(() => {
+    // Transform the raw GeoJSON data to ensure each feature has the correct structure
+    const transformedFeatures = rawGeoJSONData.features.map((feature) => ({
+      type: "Feature" as const,
+      geometry: feature.geometry as MexicoGeometry,
+      properties: feature.properties as MexicoProperties,
+      id: feature.id,
+    }));
+
+    setMexicoMunicipiosGeoJSON(transformedFeatures);
+  }, []);
 
   return (
     <MapContainer
@@ -60,17 +75,16 @@ export default function Map() {
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        url="https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png
-"
-
+        url="https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png"
       />
-      {mexicoMunicipiosGeoJSON && (
-        <GeoJSON 
-        
-        data={mexicoMunicipiosGeoJSON} 
-        style={{ color: "red" }} 
+      {mexicoMunicipiosGeoJSON.length > 0 && (
+        <GeoJSON
+          data={
+            mexicoMunicipiosGeoJSON as unknown as GeoJSON.FeatureCollection<Geometry>
+          }
+          style={{ color: "red" }}
         />
-      )}{" "}
+      )}
       {/* Render GeoJSON only if data is available */}
       <Marker position={position}>
         <Popup>
