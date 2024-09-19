@@ -43,15 +43,22 @@ export default function Map() {
     setMexicoMunicipiosGeoJSON(transformedFeatures);
   }, []);
 
+  //Detect wich state the user clicked on
   const onEachFeature = (feature: MexicoFeature, layer: L.Layer) => {
     layer.on({
-      click: (e) => {
+      click: () => {
         const stateName = feature.properties.name;
         setSelectedState(stateName);
-        console.log(`Clicked on state: ${stateName}`);
       },
     });
   };
+
+  useEffect(() => {
+  
+    console.log(`Clicked on state: ${selectedState}`);
+
+  }, [selectedState])
+  
 
 
   return (
