@@ -55,9 +55,24 @@ export default function Map() {
 
   useEffect(() => {
   
-    console.log(`Clicked on state: ${selectedState}`);
+    if (selectedState) {
+      console.log(`Clicked on state: ${selectedState}`);
+    }
 
   }, [selectedState])
+
+    // Define the style for each feature (state)
+    const style = (feature: Feature<Geometry, MexicoProperties> | undefined) => {
+      if (!feature) {
+        return {};
+      }
+    
+      return {
+        color: selectedState === feature.properties.name ? "#ff0000" : "#ffffff", // Highlight clicked state in red
+        weight: 1,
+        fillColor: selectedState === feature.properties.name ? "#ff0000" : "#ffffff", // Change fill color for clicked state
+      };
+    };
   
 
 
@@ -85,7 +100,7 @@ export default function Map() {
             mexicoMunicipiosGeoJSON as unknown as GeoJSON.FeatureCollection<Geometry>
           }
           onEachFeature={onEachFeature}
-          style={{color:"#fff"}}
+          style={style}
         />
       )}
 
