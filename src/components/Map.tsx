@@ -68,9 +68,9 @@ export default function Map() {
       }
     
       return {
-        color: selectedState === feature.properties.name ? "#ff0000" : "#ffffff", // Highlight clicked state in red
+        color: selectedState === feature.properties.name ? "#a19f9f" : "#fff", // Highlight clicked state in red
         weight: 1,
-        fillColor: selectedState === feature.properties.name ? "#ff0000" : "#ffffff", // Change fill color for clicked state
+        fillColor: selectedState === feature.properties.name ? "#a19f9f" : "#fff", // Change fill color for clicked state
       };
     };
   
