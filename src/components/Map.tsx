@@ -3,9 +3,7 @@
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css";
 import "leaflet-defaulticon-compatibility";
-import {
-  MapContainer, TileLayer, GeoJSON
-} from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import { LatLngExpression } from "leaflet"; // Import LatLngExpression
 import { Feature, Geometry, MultiPolygon, Polygon } from "geojson";
 // Import your GeoJSON data
@@ -27,7 +25,9 @@ type MexicoFeature = Feature<MexicoGeometry, MexicoProperties>;
 export default function Map() {
   //** Last option to put the name of the states
   const position: LatLngExpression = [20.63087146186356, -102.2211034886408];
-  const [mexicoMunicipiosGeoJSON, setMexicoMunicipiosGeoJSON] = useState<MexicoFeature[]>([]);
+  const [mexicoMunicipiosGeoJSON, setMexicoMunicipiosGeoJSON] = useState<
+    MexicoFeature[]
+  >([]);
   const [selectedState, setSelectedState] = useState<string | null>(null);
 
   useEffect(() => {
@@ -53,56 +53,58 @@ export default function Map() {
   };
 
   useEffect(() => {
-  
     if (selectedState) {
       console.log(`Clicked on state: ${selectedState}`);
     }
+  }, [selectedState]);
 
-  }, [selectedState])
+  // Define the style for each feature (state)
+  const style = (feature: Feature<Geometry, MexicoProperties> | undefined) => {
+    if (!feature) {
+      return {};
+    }
 
-    // Define the style for each feature (state)
-    const style = (feature: Feature<Geometry, MexicoProperties> | undefined) => {
-      if (!feature) {
-        return {};
-      }
-    
-      return {
-        color: selectedState === feature.properties.name ? "#a19f9f" : "#fff", // Highlight clicked state in red
-        weight: 1,
-        fillColor: selectedState === feature.properties.name ? "#a19f9f" : "#fff", // Change fill color for clicked state
-      };
+    return {
+      //Border of the states
+      color: selectedState === feature.properties.name ? "#E0E0E0" : "#424242", // Highlight clicked state in red
+      weight: 0.4,
+      //Content of the states
+      fillColor: selectedState === feature.properties.name ? "#00E5FF" : "#1E1E1E", // Change fill color for clicked state
     };
-  
-
+  };
 
   return (
-    <MapContainer
-      center={position}
-      zoom={3.5}
-      scrollWheelZoom={false}
-      style={{ height: "400px", width: "800px", borderRadius: "5px", backgroundColor:"black", filter: "hue-rotate(180deg) saturate(200%)" }}
-      attributionControl={false} // Hide the default attribution control
-      doubleClickZoom={false}
-      dragging={false}
-      zoomControl={false}
-      
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        url="https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png"
-
-      />
-      {mexicoMunicipiosGeoJSON.length > 0 && (
-        <GeoJSON
-          data={
-            mexicoMunicipiosGeoJSON as unknown as GeoJSON.FeatureCollection<Geometry>
-          }
-          onEachFeature={onEachFeature}
-          style={style}
+    <>
+      <MapContainer
+        center={position}
+        zoom={3.5}
+        scrollWheelZoom={false}
+        style={{
+          height: "400px",
+          width: "800px",
+          borderRadius: "5px",
+          backgroundColor: "black",
+        }}
+        attributionControl={false} // Hide the default attribution control
+        doubleClickZoom={false}
+        dragging={false}
+        zoomControl={false}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url="https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png"
         />
-      )}
-
-    </MapContainer>
+        {mexicoMunicipiosGeoJSON.length > 0 && (
+          <GeoJSON
+            data={
+              mexicoMunicipiosGeoJSON as unknown as GeoJSON.FeatureCollection<Geometry>
+            }
+            onEachFeature={onEachFeature}
+            style={style}
+          />
+        )}
+      </MapContainer>
+    </>
   );
 }
