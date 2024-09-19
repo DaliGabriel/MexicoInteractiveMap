@@ -24,7 +24,6 @@ type MexicoProperties = {
 
 type MexicoFeature = Feature<MexicoGeometry, MexicoProperties>;
 
-
 export default function Map() {
   //** Last option to put the name of the states
   const position: LatLngExpression = [20.63087146186356, -102.2211034886408];
@@ -86,9 +85,9 @@ export default function Map() {
       doubleClickZoom={false}
       dragging={false}
       zoomControl={false}
+      
     >
       <TileLayer
-      
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         url="https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png"
