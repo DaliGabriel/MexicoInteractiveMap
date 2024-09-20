@@ -66,7 +66,7 @@ export default function Map() {
 
     return {
       //Border of the states
-      color: selectedState === feature.properties.name ? "#FFF" : "gray", // Highlight clicked state in red
+      color: selectedState === feature.properties.name ? "#FFF" : "#ffffff59", // Highlight clicked state in red
       weight: 0.4,   
       //Content of the states
       fillColor: selectedState === feature.properties.name ? "#00E5FF" : "#1E1E1E", // Change fill color for clicked state
