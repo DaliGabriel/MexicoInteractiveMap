@@ -22,13 +22,17 @@ type MexicoProperties = {
 
 type MexicoFeature = Feature<MexicoGeometry, MexicoProperties>;
 
-export default function Map() {
+interface MapProps {
+  selectedState: string | null;
+  setSelectedState: (state: string | null) => void;
+}
+
+export default function Map({ selectedState, setSelectedState }: MapProps) {
   //** Last option to put the name of the states
   const position: LatLngExpression = [20.63087146186356, -102.2211034886408];
   const [mexicoMunicipiosGeoJSON, setMexicoMunicipiosGeoJSON] = useState<
     MexicoFeature[]
   >([]);
-  const [selectedState, setSelectedState] = useState<string | null>(null);
 
   useEffect(() => {
     // Transform the raw GeoJSON data to ensure each feature has the correct structure
@@ -52,12 +56,6 @@ export default function Map() {
     });
   };
 
-  useEffect(() => {
-    if (selectedState) {
-      console.log(`Clicked on state: ${selectedState}`);
-    }
-  }, [selectedState]);
-
   // Define the style for each feature (state)
   const style = (feature: Feature<Geometry, MexicoProperties> | undefined) => {
     if (!feature) {
@@ -67,11 +65,13 @@ export default function Map() {
     return {
       //Border of the states
       color: selectedState === feature.properties.name ? "#FFF" : "#ffffff59", // Highlight clicked state in red
-      weight: 0.4,   
+      weight: 0.4,
       //Content of the states
-      fillColor: selectedState === feature.properties.name ? "#00E5FF" : "#1E1E1E", // Change fill color for clicked state
+      fillColor:
+        selectedState === feature.properties.name ? "#00E5FF" : "#1E1E1E", // Change fill color for clicked state
     };
   };
+  
 
   return (
     <>
@@ -80,11 +80,15 @@ export default function Map() {
         zoom={3.5}
         scrollWheelZoom={false}
         style={{
-          height: "400px",
-          width: "800px",
-          borderRadius: "5px",
+          height: "100vh", // Change to full viewport height
+          width: "100%", // Change to full width
+          position: "absolute", // Add this
+          top: 0, // Add this
+          left: 0, // Add this
+          borderRadius: "0", // Remove border radius
+          backgroundColor: "black",
         }}
-        attributionControl={false} // Hide the default attribution control
+        attributionControl={false}
         doubleClickZoom={false}
         dragging={false}
         zoomControl={false}
