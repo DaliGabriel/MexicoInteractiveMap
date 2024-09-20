@@ -66,9 +66,8 @@ export default function Map() {
 
     return {
       //Border of the states
-      color: selectedState === feature.properties.name ? "#FFF" : "#424242", // Highlight clicked state in red
-      weight: 0.5,
-      opacity: 1,
+      color: selectedState === feature.properties.name ? "#FFF" : "gray", // Highlight clicked state in red
+      weight: 0.4,   
       //Content of the states
       fillColor: selectedState === feature.properties.name ? "#00E5FF" : "#1E1E1E", // Change fill color for clicked state
     };
@@ -84,7 +83,6 @@ export default function Map() {
           height: "400px",
           width: "800px",
           borderRadius: "5px",
-          backgroundColor: "black",
         }}
         attributionControl={false} // Hide the default attribution control
         doubleClickZoom={false}
