@@ -12,6 +12,7 @@ export default function Home() {
 
   return (
     <div className="font-[family-name:var(--font-geist-sans)] h-screen">
+      
       <main className="flex justify-center items-center  h-full mx-2">
         <LazyMap />
       </main>
