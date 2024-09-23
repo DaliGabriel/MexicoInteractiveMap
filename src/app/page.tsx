@@ -806,7 +806,7 @@ export default function Home() {
       </main>
       {selectedState && statesInfo[selectedState] && (
         <section className="relative z-20 pt-[500px]">
-          <div className="min-h-screen bg-white/80 backdrop-blur-sm p-8">
+          <div className="min-h-screen bg-white/50 backdrop-blur-sm p-8">
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-2xl font-bold">
                 {statesInfo[selectedState].name}
