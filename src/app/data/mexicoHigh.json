@@ -12029,7 +12029,7 @@
                 ]
             },
             "properties": {
-                "name": "San Luis Potosí",
+                "name": "SanLuisPotosí",
                 "id": "MX-SLP",
                 "CNTRY": "Mexico",
                 "TYPE": "State"
@@ -13400,7 +13400,7 @@
                 ]
             },
             "properties": {
-                "name": "Quintana Roo",
+                "name": "QuintanaRoo",
                 "id": "MX-ROO",
                 "CNTRY": "Mexico",
                 "TYPE": "State"
@@ -17624,7 +17624,7 @@
                 ]
             },
             "properties": {
-                "name": "Nuevo León",
+                "name": "NuevoLeón",
                 "id": "MX-NLE",
                 "CNTRY": "Mexico",
                 "TYPE": "State"
@@ -26984,7 +26984,7 @@
                 ]
             },
             "properties": {
-                "name": "Ciudad de México",
+                "name": "CiudaddeMéxico",
                 "id": "MX-CMX",
                 "CNTRY": "Mexico",
                 "TYPE": "Federal District"
@@ -35624,7 +35624,7 @@
                 ]
             },
             "properties": {
-                "name": "Baja California Sur",
+                "name": "BajaCaliforniaSur",
                 "id": "MX-BCS",
                 "CNTRY": "Mexico",
                 "TYPE": "State"
@@ -37467,7 +37467,7 @@
                 ]
             },
             "properties": {
-                "name": "Baja California",
+                "name": "BajaCalifornia",
                 "id": "MX-BCN",
                 "CNTRY": "Mexico",
                 "TYPE": "State"
