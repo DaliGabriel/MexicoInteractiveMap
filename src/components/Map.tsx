@@ -80,7 +80,7 @@ export default function Map({ selectedState, setSelectedState }: MapProps) {
         zoom={3.5}
         scrollWheelZoom={false}
         style={{
-          height: "100vh", // Change to full viewport height
+          height: "100%", // Change to full viewport height
           width: "100%", // Change to full width
           position: "absolute", // Add this
           top: 0, // Add this
