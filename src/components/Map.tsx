@@ -92,6 +92,7 @@ export default function Map({ selectedState, setSelectedState }: MapProps) {
         doubleClickZoom={false}
         dragging={false}
         zoomControl={false}
+        touchZoom={false}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
