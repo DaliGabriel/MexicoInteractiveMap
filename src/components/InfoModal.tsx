@@ -1,4 +1,5 @@
 import React from "react";
+import 'animate.css';
 
 interface InfoModalProps {
   statesInfo: {
@@ -28,7 +29,7 @@ const InfoModal = ({
 
   return (
     <>
-      <section className="relative z-20 pt-[500px]">
+      <section className="relative z-20 pt-[500px] animate__animated animate__bounceInUp">
         <div className="min-h-screen bg-white/50 backdrop-blur-sm p-8">
           <div className="flex justify-between items-center mb-4">
             <h1 className="text-2xl font-bold">
