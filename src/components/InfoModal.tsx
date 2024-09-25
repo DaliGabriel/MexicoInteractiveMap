@@ -1,5 +1,5 @@
 import React from "react";
-import 'animate.css';
+import "animate.css";
 
 interface InfoModalProps {
   statesInfo: {
@@ -25,11 +25,10 @@ const InfoModal = ({
   setSelectedState,
 }: InfoModalProps) => {
 
-    
 
   return (
     <>
-      <section className="relative z-20 pt-[500px] animate__animated animate__bounceInUp">
+      <section className="relative z-20 pt-[500px] animate__animated animate__headShake">
         <div className="min-h-screen bg-white text-black backdrop-blur-sm p-10">
           <div className="flex justify-between items-center">
             <h1 className="text-5xl font-bold">
@@ -37,7 +36,7 @@ const InfoModal = ({
             </h1>
             <button
               type="button"
-              className="bg-[#c6f8fd] rounded-md p-2 inline-flex items-center justify-center text-gray-600 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
+              className="bg-[#c6f8fd] rounded-md p-2 inline-flex items-center justify-center text-gray-600 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 shadow-md"
               onClick={() => setSelectedState(null)}
             >
               <span className="sr-only">Close menu</span>
@@ -62,47 +61,57 @@ const InfoModal = ({
           <div className="mt-7">
             {selectedState && (
               <>
-                <p className="text-2xl">
-                  {statesInfo[selectedState].overview}
+
+                <p className="text-2xl">{statesInfo[selectedState].overview}</p>
+
+                <p className="mt-7 text-2xl">
+                  <strong>🏙️ Capital city:</strong>{" "}
+                  <br />
+                  {statesInfo[selectedState].capital}
                 </p>
                 <p className="mt-7 text-2xl">
-                  <strong>Capital:</strong> {statesInfo[selectedState].capital}
-                </p>
-                <p className="mt-7 text-2xl">
-                  <strong>Population:</strong>{" "}
+                  <strong>👨‍👩‍👧‍👦 Population:</strong>{" "}
+                  <br />
                   {statesInfo[selectedState].population}
                 </p>
                 <p className="mt-7 text-2xl">
-                  <strong>Economy:</strong> {statesInfo[selectedState].economy}
+                  <strong>💸 Economy:</strong>{" "}
+                  <br />
+                  {statesInfo[selectedState].economy}
                 </p>
-                <div className="mt-7 text-2xl" >
-                  <strong>Attractions:</strong>
-                  <ul className="list-disc list-inside ml-4">
+                <div className="mt-7 text-2xl">
+                  <strong>🎢 Attractions:</strong>
+                  <br />
+                  <ul className="list-disc list-inside ml-4 mt-2">
                     {statesInfo[selectedState].attractions.map(
                       (attraction, index) => (
-                        <li key={index}>{attraction}</li>
+                        <li className="mt-2" key={index}>{attraction}</li>
                       )
                     )}
                   </ul>
                 </div>
                 <p className="mt-7 text-2xl">
-                  <strong>Culture:</strong> {statesInfo[selectedState].culture}
+                  <strong>✨ Culture:</strong>{" "}
+                  <br />
+                  {statesInfo[selectedState].culture}
                 </p>
                 <div className="mt-7 text-2xl">
-                  <strong>Education:</strong>
-                  <ul className="list-disc list-inside ml-4">
+                  <strong>📚 Education:</strong>
+                  <br />
+                  <ul className="list-disc list-inside ml-4 mt-2">
                     {statesInfo[selectedState].education.map(
                       (institution, index) => (
-                        <li key={index}>{institution}</li>
+                        <li className="mt-2" key={index}>{institution}</li>
                       )
                     )}
                   </ul>
                 </div>
                 <div className="mt-7 text-2xl">
-                  <strong>Fun Facts:</strong>
-                  <ul className="list-disc list-inside ml-4">
+                  <strong>🥳 Fun Facts:</strong>
+                  <br />
+                  <ul className="list-disc list-inside ml-4 mt-2">
                     {statesInfo[selectedState].funFacts.map((fact, index) => (
-                      <li key={index}>{fact}</li>
+                      <li className="mt-2" key={index}>{fact}</li>
                     ))}
                   </ul>
                 </div>
