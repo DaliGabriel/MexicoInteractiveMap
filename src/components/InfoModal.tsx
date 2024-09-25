@@ -29,8 +29,8 @@ const InfoModal = ({
 
   return (
     <>
-      <section className="relative z-20 pt-[500px] animate__animated animate__bounceInUp font-[family-name:var(--font-geist-sans)]">
-        <div className="min-h-screen bg-white backdrop-blur-sm p-10">
+      <section className="relative z-20 pt-[500px] animate__animated animate__bounceInUp">
+        <div className="min-h-screen bg-white text-black backdrop-blur-sm p-10">
           <div className="flex justify-between items-center">
             <h1 className="text-5xl font-bold">
               {selectedState ? statesInfo[selectedState].name : ""}
