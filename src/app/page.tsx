@@ -895,7 +895,7 @@ export default function Home() {
   const [selectedState, setSelectedState] = useState<string | null>(null);
 
   return (
-    <div className="font-[family-name:var(--font-geist-sans)] min-h-screen relative">
+    <div className=" min-h-screen relative">
       <main className="fixed inset-0 z-10">
         <LazyMap
           selectedState={selectedState}
