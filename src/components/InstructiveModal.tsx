@@ -5,7 +5,7 @@ interface InstructiveModalProps {
 }
 
 const InstructiveModal = ({ selectedState }: InstructiveModalProps) => {
-  const animationClass = selectedState ? "" : "animate__infinite";
+
 
   return (
     <div className="relative z-50 bg-white bg-opacity-90 h-40 w-60 mx-auto mt-20 rounded-lg shadow-2xl ">
@@ -15,9 +15,11 @@ const InstructiveModal = ({ selectedState }: InstructiveModalProps) => {
       </p>
       <br />
       <div
-        className={`text-center animate__animated animate__heartBeat animate__delay-2s ${animationClass}`}
+        className={`text-center animate__animated animate__heartBeat animate__delay-2s animate__infinite`}
       >
-        👇
+        {
+        selectedState ? "⬇️" : "👇"
+        }
       </div>
     </div>
   );
