@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import InfoModal from "@/components/InfoModal";
 import InstructiveModal from "@/components/InstructiveModal";
 import { StatesInfo } from "./data/StatesInfo";
+import { detectBrowserLanguage } from "@/utils/DetectBrowserLanguage";
 
 const LazyMap = dynamic(() => import("../components/Map"), {
   ssr: false,
@@ -14,19 +15,27 @@ const LazyMap = dynamic(() => import("../components/Map"), {
 export default function Home() {
   const [selectedState, setSelectedState] = useState<string | null>(null);
   const [mapload, setMapload] = useState<boolean>(false);
+  const [selectedLanguage, setSelectedLanguage] = useState<"en" | "es">("en");
 
   useEffect(() => {
     // Set mapload to true when the component is mounted (map is loaded)
     setMapload(true);
+    //Detect the lenguaje of the user
+    const detectedLang = detectBrowserLanguage();
+    setSelectedLanguage(detectedLang as "en" | "es");
   }, []); // Empty dependency array ensures this runs once on component mount
+
+  console.log(selectedLanguage);
 
   return (
     <div className="relative">
-      
       {mapload && (
         <>
           <header>
-            <InstructiveModal selectedState={selectedState} />
+            <InstructiveModal
+              selectedState={selectedState}
+              language={selectedLanguage}
+            />
           </header>
         </>
       )}
@@ -43,6 +52,7 @@ export default function Home() {
           selectedState={selectedState}
           setSelectedState={setSelectedState}
           statesInfo={StatesInfo}
+          language={selectedLanguage}
         />
       )}
     </div>
