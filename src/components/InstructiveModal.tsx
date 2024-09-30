@@ -10,8 +10,8 @@ const InstructiveModal = ({
   language,
 }: InstructiveModalProps) => {
   return (
-    <div className="relative z-50 bg-white bg-opacity-90  w-60 mx-auto mt-20 rounded-lg shadow-2xl px-2">
-      <p className="text-center text-lg pt-4 font-bold">
+    <div className="relative z-50 bg-white  w-60 mx-auto mt-20 rounded-lg shadow-2xl px-2">
+      <p className="text-center text-lg pt-4 font-bold text-black">
       {language == 'en' 
       ? 
       selectedState ? 
