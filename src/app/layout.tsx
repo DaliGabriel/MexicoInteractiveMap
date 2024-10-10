@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Roboto } from 'next/font/google';
+import Analytics from "@/components/Analytics";
 
 const roboto = Roboto({
   weight: ['400', '500', '700'], // Specify weights you want
@@ -24,6 +25,7 @@ export default function RootLayout({
         className={`${roboto.className} antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
