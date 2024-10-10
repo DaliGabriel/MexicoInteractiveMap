@@ -11,7 +11,7 @@ declare global {
     }
   }
   
-  const GA_TRACKING_ID = 'YOUR_GOOGLE_ANALYTICS_ID';
+  const GA_TRACKING_ID = 'G-DKFQ5Q9DD3';
   
   const Analytics = () => {
     useEffect(() => {
