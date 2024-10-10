@@ -1,28 +1,29 @@
+'use client'
 import { useEffect } from 'react';
 import Script from 'next/script';
 
-// Define the Window interface to include dataLayer and gtag
 declare global {
-  interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
-  }
-}
-
-// Replace this with your actual Google Analytics ID
-const GA_TRACKING_ID = 'G-DKFQ5Q9DD3';
-
-const Analytics = () => {
-  useEffect(() => {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(...args: any[]) {
-      window.dataLayer.push(arguments);
+    interface Window {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      dataLayer: any[];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      gtag: (...args: any[]) => void;
     }
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', GA_TRACKING_ID);
-  }, []);
-
+  }
+  
+  const GA_TRACKING_ID = 'YOUR_GOOGLE_ANALYTICS_ID';
+  
+  const Analytics = () => {
+    useEffect(() => {
+      window.dataLayer = window.dataLayer || [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      function gtag(...args: any[]) {
+        window.dataLayer.push(args);
+      }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', GA_TRACKING_ID);
+    }, []);
   return (
     <>
       <Script
