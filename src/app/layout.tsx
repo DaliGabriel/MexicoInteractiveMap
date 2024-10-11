@@ -22,9 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        {/* AdSense meta tag */}
-        <meta name="google-adsense-account" content="ca-pub-9931033884121639" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9931033884121639"
+          crossOrigin="anonymous"
+        ></script>
       </Head>
+
       <body className={`${roboto.className} antialiased`}>
         {children}
         <Analytics />
