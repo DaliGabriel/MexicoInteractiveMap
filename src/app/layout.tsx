@@ -3,6 +3,7 @@ import "./globals.css";
 import { Roboto } from "next/font/google";
 import Analytics from "@/components/Analytics";
 import Head from "next/head";
+import Script from "next/script";
 
 const roboto = Roboto({
   weight: ["400", "500", "700"], // Specify weights you want
@@ -21,17 +22,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9931033884121639"
-          crossOrigin="anonymous"
-        ></script>
-      </Head>
 
       <body className={`${roboto.className} antialiased`}>
         {children}
         <Analytics />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9931033884121639"
+          crossOrigin="anonymous"
+        />
       </body>
     </html>
   );
