@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Roboto } from "next/font/google";
 import Analytics from "@/components/Analytics";
-import Script from "next/script";
 
 const roboto = Roboto({
   weight: ["400", "500", "700"], // Specify weights you want
