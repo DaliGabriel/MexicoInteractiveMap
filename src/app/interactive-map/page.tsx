@@ -12,7 +12,7 @@ const LazyMap = dynamic(() => import("../../components/Map"), {
   loading: () => <p className="text-center mt-80">Loading...</p>,
 });
 
-const page = () => {
+const Page = () => {
   const [selectedState, setSelectedState] = useState<string | null>(null);
   const [mapload, setMapload] = useState<boolean>(false);
   const [selectedLanguage, setSelectedLanguage] = useState<"en" | "es">("en");
@@ -59,4 +59,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
