@@ -5,7 +5,7 @@ const CardBlogPost = () => {
   return (
     <>
       <div className="w-full sm:w-1/2 md:w-1/3 self-stretch p-2 mb-2">
-        <div className="rounded shadow-md dark:shadow-gray-700 h-full bg-white dark:bg-gray-800">
+        <div className="rounded shadow-md h-full bg-white dark:bg-gray-800">
           <a href="blog/typography/">
             <Image
               className="w-full m-0 rounded-t lazy"

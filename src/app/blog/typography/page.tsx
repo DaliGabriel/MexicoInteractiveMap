@@ -8,7 +8,7 @@ const Page = () => {
     <>
       <Header />
 
-      <main className="mx-7 lg:mx-6 mt-32 flex-grow dark:bg-gray-900">
+      <main className="mx-7 lg:mx-6 mt-32 flex-grow ">
         <article className="max-w-5xl mx-auto">
           <header className="mb-14">
             <h1 className="text-3xl text-center font-bold leading-normal text-slate-900 dark:text-slate-100 mt-0 mb-3">
