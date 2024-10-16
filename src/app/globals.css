@@ -9,7 +9,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1e1e1e;
+    --background:         
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 24 39 / var(--tw-bg-opacity)) /* #111827 */;;
     --foreground: #ededed;
   }
 }
