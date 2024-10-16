@@ -8,28 +8,14 @@ const Page = () => {
     <>
       <Header />
 
-      <main className="mx-7 lg:mx-6 mt-32 flex-grow">
+      <main className="mx-7 lg:mx-6 mt-32 flex-grow dark:bg-gray-900">
         <article className="max-w-5xl mx-auto">
           <header className="mb-14">
-            <h1 className="text-3xl text-center font-bold leading-normal text-slate-900 mt-0 mb-3">
+            <h1 className="text-3xl text-center font-bold leading-normal text-slate-900 dark:text-slate-100 mt-0 mb-3">
               Typography
             </h1>
-            <div className="text-center">
+            <div className="text-center text-slate-700 dark:text-slate-400">
               Published on 21 June 2020 08:04 AM
-            </div>
-            <div className="mt-3 text-center">
-              <a
-                href="/tags/popular"
-                className="inline-block bg-slate-200 rounded-full px-3 py-1 text-sm font-medium text-slate-700 m-0.5"
-              >
-                #popular
-              </a>{" "}
-              <a
-                href="/tags/sample"
-                className="inline-block bg-slate-200 rounded-full px-3 py-1 text-sm font-medium text-slate-700 m-0.5"
-              >
-                #sample
-              </a>
             </div>
             <div className="mt-10 -mx-7 md:mx-0">
               <Image
@@ -41,7 +27,10 @@ const Page = () => {
               />
             </div>
           </header>
-          <div id="content" className="prose text-slate-800 max-w-none">
+          <div
+            id="content"
+            className="prose dark:prose-invert text-slate-800 dark:text-slate-300 max-w-none"
+          >
             <p>
               Lid est laborum et dolorum fuga. Et harum quidem rerum facilis est
               et expeditasi distinctio. Nam libero tempore, cum soluta nobis est
@@ -61,7 +50,9 @@ const Page = () => {
               elit nec, vehicula dui. Nunc vestibulum lorem ac finibus
               consequat.
             </p>
-            <h1 className=" text-3xl font-bold  text-slate-900 mt-10" >Heading 1</h1>
+            <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mt-10">
+              Heading 1
+            </h1>
             <p className="mt-10">
               Lid est laborum et dolorum fuga. Et harum quidem rerum facilis est
               et expeditasi distinctio. Nam libero tempore, cum soluta nobis est
@@ -79,11 +70,11 @@ const Page = () => {
               natus error sit voluptatem accusantium doloremque laste. Dolores
               sadips ipsums sits.
             </p>
-
           </div>
         </article>
       </main>
-      <Footer/>
+
+      <Footer />
     </>
   );
 };
