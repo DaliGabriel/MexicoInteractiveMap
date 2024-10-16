@@ -8,7 +8,7 @@ const CardBlogPost = () => {
     <>
       <div className="w-full sm:w-1/2 md:w-1/3 self-stretch p-2 mb-2">
         <div className="rounded shadow-md h-full">
-          <a href="/typography/">
+          <a href="blog/typography/">
             <Image
               className="w-full m-0 rounded-t lazy"
               src="https://vredeburg.netlify.app/assets/img/typography.png"
@@ -21,7 +21,7 @@ const CardBlogPost = () => {
             <div className="font-semibold text-lg mb-2">
               <a
                 className="text-slate-900 hover:text-slate-700"
-                href="/typography/"
+                href="blog/typography/"
               >
                 Typography
               </a>
