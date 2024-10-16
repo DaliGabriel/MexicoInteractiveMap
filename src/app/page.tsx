@@ -4,7 +4,7 @@ import Header from "@/components/Blog/Header";
 
 export default function Home() {
   return (
-    <div className="flex flex-col h-screen bg-white text-slate-800 break-words">
+    <div className="flex flex-col h-screen  text-slate-800 break-words">
       <Header />
       <main className="mx-7 lg:mx-6 mt-32 flex-grow">
         <div className="max-w-5xl mx-auto">
