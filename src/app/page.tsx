@@ -1,7 +1,7 @@
 import CardBlogPost from "@/components/Blog/CardBlogPost";
 import Footer from "@/components/Blog/Footer";
 import Header from "@/components/Blog/Header";
-import cardposts from "./data/blog/cardposts.json";
+import blogPosts from "./data/blog/blogContent.json";
 
 export default function Home() {
   return (
@@ -10,13 +10,14 @@ export default function Home() {
       <main className="mx-7 lg:mx-6 mt-32 flex-grow">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-wrap -mx-2">
-            {cardposts.map((post, index) => (
+            {blogPosts.map((post, index) => (
               <CardBlogPost
+                slug={post.slug}
                 key={index}
-                ImageUrl={post.imageUrl}
-                BlogTitle={post.blogTitle}
-                BlogDate={post.blogDate}
-                BlogSummarize={post.blogSummarize}
+                ImageUrl={post.mainImageSrc}
+                BlogTitle={post.title}
+                BlogDate={post.date}
+                BlogSummarize={post.introduction.slice(0, 150) + "..."} // Short summary from introduction
               />
             ))}
           </div>
