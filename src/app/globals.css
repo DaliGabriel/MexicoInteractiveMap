@@ -26,5 +26,11 @@ body {
   }
 }
 
-
-
+.titleBlog {
+  font-size: 1.875rem;
+  text-align: center;
+  line-height: 1.5;
+  font-weight: 700;
+  margin-top: 0px;
+  margin-bottom: 0.75rem;
+}

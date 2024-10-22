@@ -1,0 +1,20 @@
+[
+    {
+      "imageUrl": "https://vredeburg.netlify.app/assets/img/typography.png",
+      "blogTitle": "Typography",
+      "blogDate": "21 June 2020 08:04 AM",
+      "blogSummarize": "Lid est laborum et dolorum fuga. Et harum quidem rerum facilis est et expeditasi distincti..."
+    },
+    {
+      "imageUrl": "https://vredeburg.netlify.app/assets/img/typography.png",
+      "blogTitle": "Another Post",
+      "blogDate": "15 August 2021 09:30 AM",
+      "blogSummarize": "This is a summary for another post. Quis autem vel eum iure reprehenderit..."
+    },
+    {
+      "imageUrl": "https://vredeburg.netlify.app/assets/img/typography.png",
+      "blogTitle": "Yet Another Post",
+      "blogDate": "10 October 2022 11:15 AM",
+      "blogSummarize": "Ratione voluptatem sequi nesciunt. Neque porro quisquam est qui dolorem ipsum quia..."
+    }
+  ]
