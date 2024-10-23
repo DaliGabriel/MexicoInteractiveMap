@@ -24,8 +24,7 @@ const BlogSection = ({
         src={imageSrc}
         alt={imageAlt}
         width={960}
-        height={500}
-        priority 
+        height={500} 
       />
     </div>
     {/* Iterate over the content array and render each paragraph */}

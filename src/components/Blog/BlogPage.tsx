@@ -45,7 +45,7 @@ const BlogPage = ({
                 priority
                 className="w-full max-w-2xl mx-auto"
                 src={mainImageSrc}
-                alt="Post thumbnail"
+                alt={`Image about ${introduction}`}
                 width={960}
                 height={500}
               />

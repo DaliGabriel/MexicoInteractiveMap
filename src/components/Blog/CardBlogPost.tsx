@@ -37,7 +37,7 @@ const CardBlogPost = ({
               className="w-full h-full object-cover rounded-t" // Ensures the image covers the container
               src={ImageUrl}
               fill // Dynamically fills the parent container
-              alt="This post thumbnail"
+              alt={`Image about ${slug}`}
               priority
             />
           </div>
