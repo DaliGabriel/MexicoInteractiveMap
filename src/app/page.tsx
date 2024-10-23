@@ -7,13 +7,13 @@ export default function Home() {
   return (
     <div className="flex flex-col h-screen  text-slate-800 break-words">
       <Header />
-      <main className="mx-7 lg:mx-6 mt-32 flex-grow">
+      <main className="mx-7 lg:mx-6 mt-10 flex-grow">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-wrap -mx-2">
-            {blogPosts.map((post, index) => (
+            {blogPosts.map((post) => (
               <CardBlogPost
+                key={post.slug}
                 slug={post.slug}
-                key={index}
                 ImageUrl={post.mainImageSrc}
                 BlogTitle={post.title}
                 BlogDate={post.date}

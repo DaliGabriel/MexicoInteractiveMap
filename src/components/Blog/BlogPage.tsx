@@ -31,7 +31,7 @@ const BlogPage = ({
   return (
     <>
       <Header />
-      <main className="mx-7 lg:mx-6 mt-32 flex-grow">
+      <main className="mx-7 lg:mx-6 mt-10 flex-grow">
         <article className="max-w-5xl mx-auto">
           <header className="mb-14">
             <h1 className="text-3xl text-center font-bold leading-normal text-slate-900 dark:text-slate-100 mt-0 mb-3">
@@ -42,6 +42,7 @@ const BlogPage = ({
             </div>
             <div className="mt-10 -mx-7 md:mx-0">
               <Image
+                priority
                 className="w-full max-w-2xl mx-auto"
                 src={mainImageSrc}
                 alt="Post thumbnail"

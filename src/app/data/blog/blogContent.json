@@ -54,25 +54,53 @@
     }
   },
   {
-    "slug": "evolution-of-web-design",
-    "title": "The Evolution of Web Design",
-    "date": "10 July 2021 09:15 AM",
-    "mainImageSrc": "https://vredeburg.netlify.app/assets/img/typography.png",
-    "introduction": "Guadalajara: ¡5 Actividades Que Te Volarán la Cabeza! Guadalajara no es solo tequila y mariachi (aunque, ¡quién puede resistir una buena serenata!), también es una ciudad llena de experiencias únicas que te dejarán con ganas de más. Así que, si estás pensando en darte una escapada y te preguntas qué hacer en Guadalajara, aquí te dejo una lista de 5 actividades inolvidables que te harán decir: ''¿Por qué no vine antes?' Agarra tu sombrero y prepárate para vivir la ciudad como un local (y un poco como turista curioso también, ¡no pasa nada!).",
+    "slug": "el-dia-de-muertos-en-mexico-un-viaje-entre-risas-recuerdos-y-calaveritas",
+    "title": "El Día de Muertos en México: Un Viaje Entre Risas, Recuerdos y... ¡Calaveritas! 💀",
+    "date": "22 octubre 2024 01:20 PM",
+    "mainImageSrc": "https://raw.githubusercontent.com/DaliGabriel/blogposts/refs/heads/main/el-dia-de-muertos-en-mexico-un-viaje-entre-risas-recuerdos-y-calaveritas/Imagen1.jpeg",
+    "introduction": "El Día de Muertos no es solo una fecha en el calendario, es todo un evento que celebra la vida, la muerte, y todo lo que hay en medio (incluyendo esos tacos que te comes en la ofrenda). Del 1 al 2 de noviembre, los mexicanos nos ponemos en modo festivo para recordar a nuestros seres queridos que ya no están físicamente, pero que nos siguen acompañando... ¡incluso si es solo para disfrutar del pan de muerto!",
     "sections": [
       {
-        "title": "Introduction to Web Design",
-        "imageSrc": "https://vredeburg.netlify.app/assets/img/typography.png",
-        "imageAlt": "Introduction to Web Design",
+        "title": "Un Vistazo a las Raíces: Más Viejas Que un Tequila Añejo",
+        "imageSrc": "https://raw.githubusercontent.com/DaliGabriel/blogposts/refs/heads/main/el-dia-de-muertos-en-mexico-un-viaje-entre-risas-recuerdos-y-calaveritas/Imagen2.jpeg",
+        "imageAlt": "Raíces del Día de Muertos",
         "content": [
-          "In the early days of the web, design was very basic and functional.",
-          "Over the years, web design has evolved into an art form, blending functionality with aesthetics."
+          "La historia del Día de Muertos es tan profunda como ese pozole que te echas en las fiestas. Esta celebración tiene raíces en las culturas prehispánicas, como la mexica, maya y purépecha, que no veían la muerte como el fin, sino como una continuación del viaje. Cuando llegaron los españoles con su calendario católico, las dos culturas decidieron hacer un mix, como un buen mezcal con naranja, y de ahí surgió esta tradición que mezcla creencias ancestrales con el Día de Todos los Santos y Fieles Difuntos."
+        ]
+      },
+      {
+        "title": "Los Elementos Esenciales: ¡Esto No Es un Día de Muertos Sin Ellos!",
+        "imageSrc": "https://raw.githubusercontent.com/DaliGabriel/blogposts/refs/heads/main/el-dia-de-muertos-en-mexico-un-viaje-entre-risas-recuerdos-y-calaveritas/Imagen3.jpeg",
+        "imageAlt": "Elementos Esenciales del Día de Muertos",
+        "content": [
+          "¿Sabías que los altares de muertos no solo son decorativos? ¡Cada cosa que le pones tiene un porqué! Es como hacer una receta, pero en lugar de comida, le das amor a tus seres queridos. Veamos qué no puede faltar:",
+          "<strong>Flores de cempasúchil:</strong> Las famosas flores naranjas que hacen que todo se vea tan bonito... y que, según se dice, guían a los espíritus por el buen camino. ¡Una especie de GPS espiritual!",
+          "<strong>Pan de muerto:</strong> Ese delicioso pan dulce que todos comemos como si no hubiera mañana. ¡Simboliza el ciclo de la vida y es tan adictivo como los tamales en febrero!",
+          "<strong>Calaveras de azúcar:</strong> Porque aquí la muerte no es oscura y tenebrosa, ¡es dulce y colorida! Las calaveritas nos recuerdan que la vida es un ciclo y la muerte, solo una parte más de él. Además, ¿quién se puede resistir a una calaverita con su nombre?",
+          "<strong>Velas:</strong> No, no son solo para darle ese toque gótico chic a la ofrenda. Las velas iluminan el camino para que los espíritus no se pierdan de camino a la fiesta.",
+          "<strong>Fotografías y objetos personales:</strong> Porque, ¿qué mejor forma de invitar a los difuntos que poniendo sus cosas favoritas? Desde fotos hasta el tequila favorito de tu abuelo o la novela que tu tía no se perdía. Así se siente como en casa."
+        ]
+      },
+      {
+        "title": "Una Celebración Que Atravesó Fronteras (y Pantallas)",
+        "imageSrc": "https://raw.githubusercontent.com/DaliGabriel/blogposts/refs/heads/main/el-dia-de-muertos-en-mexico-un-viaje-entre-risas-recuerdos-y-calaveritas/Imagen8.jpg",
+        "imageAlt": "Día de Muertos Internacional",
+        "content": [
+          "Aunque el Día de Muertos es tan mexicano como el guacamole, ha conquistado corazones en todo el mundo. ¡Hasta la UNESCO se subió al tren y lo declaró Patrimonio Cultural Inmaterial de la Humanidad en 2008! Y por si fuera poco, películas como <em>Coco</em> de Disney-Pixar han hecho que medio planeta se emocione con esta celebración. Vamos, ¿quién no terminó con los ojos llenos de lágrimas escuchando <em>'Recuérdame'</em>?"
+        ]
+      },
+      {
+        "title": "Cómo Se Vive el Día de Muertos: Spoiler, ¡Es Todo un Espectáculo!",
+        "imageSrc": "https://raw.githubusercontent.com/DaliGabriel/blogposts/refs/heads/main/el-dia-de-muertos-en-mexico-un-viaje-entre-risas-recuerdos-y-calaveritas/Imagen9.jpeg",
+        "imageAlt": "Cómo se vive el Día de Muertos",
+        "content": [
+          "Cada rincón de México celebra el Día de Muertos a su manera. Si alguna vez te das una vuelta por Pátzcuaro o Janitzio en estas fechas, te toparás con procesiones llenas de luz y altares flotantes que parecen salidos de un cuento. En Oaxaca, es más una fiesta en la calle con desfiles y comparsas (¡y no te olvides del mezcal!). Mientras tanto, en la Ciudad de México, la mega ofrenda en el Zócalo y el desfile de catrinas son dignos de ver, aunque lo que se roba el show son los disfraces de los más pequeños (y los no tan pequeños)."
         ]
       }
     ],
     "conclusion": {
       "content": [
-        "Guadalajara es un destino que lo tiene todo: cultura, historia, gastronomía y una energía vibrante que te hará querer quedarte. Estas cinco actividades no solo te permitirán conocer lo mejor de la ciudad, sino también crear recuerdos inolvidables. Desde recorrer mercados llenos de vida hasta disfrutar de una serenata de mariachi, cada rincón de Guadalajara tiene algo único que ofrecer. Así que, la próxima vez que planees una visita, no dudes en agregar estas actividades a tu itinerario y prepárate para una experiencia que te dejará deseando volver."
+        "El Día de Muertos es mucho más que calaveras y flores; es una celebración a la vida. Nos recuerda que nuestros seres queridos nunca se van del todo, siempre están con nosotros en el pan de muerto, en las flores de cempasúchil y, por supuesto, en nuestras memorias. Así que, la próxima vez que pongas una ofrenda, hazlo con alegría, porque ellos regresan para disfrutar el momento contigo (y tal vez llevarse una mordida de ese tamal que dejaste)."
       ]
     }
   }
