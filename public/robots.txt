@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.mexicointeractivo.com
+
+# Sitemaps
+Sitemap: https://www.mexicointeractivo.com/sitemap.xml
