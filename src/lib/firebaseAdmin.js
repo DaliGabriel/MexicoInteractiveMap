@@ -1,17 +1,9 @@
 import admin from 'firebase-admin';
-import fs from 'fs';
-import path from 'path';
 
-// Define a function to load the service account JSON
-function getServiceAccount() {
-  const filePath = path.join(process.cwd(), 'src/lib/mexicointeractivo-firebase-adminsdk-yqc76-43cb8b714c.json');
-  const serviceAccount = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-  return serviceAccount;
-}
-
-// Initialize Firebase Admin
+// Initialize Firebase Admin using environment variable
 if (!admin.apps.length) {
-  const serviceAccount = getServiceAccount();
+  const serviceAccount = JSON.parse(process.env.FIREBASE_ADMINSDK);
+  
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   });

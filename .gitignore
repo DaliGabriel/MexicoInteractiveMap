@@ -34,3 +34,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+src/lib/mexicointeractivo-firebase-adminsdk-yqc76-43cb8b714c.json
