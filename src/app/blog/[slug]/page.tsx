@@ -1,12 +1,13 @@
 import { notFound } from "next/navigation";
 import BlogPage from "@/components/Blog/BlogPage";
-import blogPosts from "../../data/blog/blogContent.json"; // Adjust path to your JSON data
+import {db} from "../../../lib/firebaseAdmin";
 import React from "react";
 import Head from "next/head";
 import BlogPostSchema from "@/components/Blog/BlogPostSchema";
 
 // Define the BlogPost type
 type BlogPost = {
+  id: string;
   slug: string;
   title: string;
   date: string;
@@ -19,13 +20,13 @@ type BlogPost = {
     content: string[];
   }[];
   conclusion: {
-    content: string[]; // Changed this to an array of strings, not an array of objects
+    content: string[];
   };
 };
 
 // Dynamic blog page component
-const Page = ({ params }: { params: { slug: string } }) => {
-  const post = blogPosts.find((post: BlogPost) => post.slug === params.slug);
+const Page = async ({ params }: { params: { slug: string } }) => {
+  const post = await fetchBlogPostBySlug(params.slug); // Fetch data from Firestore
 
   if (!post) {
     return notFound();
@@ -68,11 +69,26 @@ const Page = ({ params }: { params: { slug: string } }) => {
   );
 };
 
-// Generate static paths for blog posts
-export async function generateStaticParams() {
-  return blogPosts.map((post: BlogPost) => ({
-    slug: post.slug,
-  }));
+// Fetch a single blog post by its slug from Firestore
+async function fetchBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+
+  const docRef = db.collection("blogContent").doc(slug); // Assuming slug is used as document ID
+  const doc = await docRef.get();
+
+  if (!doc.exists) {
+    return null;
+  }
+
+  const data = doc.data() as BlogPost;
+
+
+  // Add id if it's not already in the document data
+  if (!data.id) {
+    data.id = doc.id;
+  }
+
+  return data;
 }
+
 
 export default Page;

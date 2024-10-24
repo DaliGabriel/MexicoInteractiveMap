@@ -1,11 +1,37 @@
 import CardBlogPost from "@/components/Blog/CardBlogPost";
 import Footer from "@/components/Blog/Footer";
 import Header from "@/components/Blog/Header";
-import blogPosts from "./data/blog/blogContent.json";
+import { db } from "@/lib/firebaseAdmin";
 
-export default function Home() {
+// Define the BlogPost type (same as in your other components)
+type BlogPost = {
+  id: string;
+  slug: string;
+  title: string;
+  date: string;
+  mainImageSrc: string;
+  introduction: string;
+  sections: {
+    title: string;
+    imageSrc: string;
+    imageAlt: string;
+    content: string[];
+  }[];
+  conclusion: {
+    content: string[];
+  };
+};
+
+// Fetch blog posts directly in the component (this is now an async component)
+export default async function Home() {
+  const snapshot = await db.collection("blogContent").get();
+  const blogPosts = snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  })) as BlogPost[]; // Make sure it conforms to your BlogPost type
+
   return (
-    <div className="flex flex-col h-screen  text-slate-800 break-words">
+    <div className="flex flex-col h-screen text-slate-800 break-words">
       <Header />
       <main className="mx-7 lg:mx-6 mt-10 flex-grow">
         <div className="max-w-5xl mx-auto">
@@ -21,21 +47,6 @@ export default function Home() {
               />
             ))}
           </div>
-
-          {/* <div className="mt-3 flow-root">
-            <a
-              href="/"
-              className="float-left bg-white font-semibold py-2 px-4 border rounded shadow-md text-slate-800 cursor-default text-opacity-50"
-            >
-              Previous
-            </a>{" "}
-            <a
-              href="/"
-              className="float-right bg-white font-semibold py-2 px-4 border rounded shadow-md text-slate-800 cursor-pointer hover:bg-slate-100"
-            >
-              Next
-            </a>
-          </div> */}
         </div>
       </main>
       <Footer />
