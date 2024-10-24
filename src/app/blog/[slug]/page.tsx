@@ -26,7 +26,6 @@ type BlogPost = {
 
 // Dynamic blog page component
 const Page = async ({ params }: { params: { slug: string } }) => {
-  
   const post = await fetchBlogPostBySlug(params.slug); // Fetch data from Firestore
 
   if (!post) {
