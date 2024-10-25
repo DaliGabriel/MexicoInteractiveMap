@@ -7,7 +7,6 @@ export async function POST(request: Request) {
 
     const { password, username } = data;
 
-    
     // Hardcoded credentials (replace with process.env for production)
     const adminUsername = process.env.ADMIN_USERNAME;
     const adminPassword = process.env.ADMIN_PASSWORD;

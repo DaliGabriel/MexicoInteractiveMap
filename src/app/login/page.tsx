@@ -9,6 +9,7 @@ const Page = () => {
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
+    
     e.preventDefault();
 
     const res = await fetch("/api/auth/login", {
