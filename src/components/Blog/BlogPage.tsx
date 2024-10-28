@@ -77,7 +77,7 @@ const BlogPage = ({
               Conclusión:
             </h2>
             {conclusion.content.map((paragraph, idx) => (
-              <p key={idx}>{paragraph}</p>
+              <p key={idx} dangerouslySetInnerHTML={{ __html: paragraph }}></p>
             ))}
           </footer>
         </article>

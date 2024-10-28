@@ -36,7 +36,7 @@ function initializeFirebase() {
         credential: admin.credential.cert(serviceAccount),
       });
 
-      console.log('Firebase Admin initialized successfully');
+      // console.log('Firebase Admin initialized successfully');
     }
     return admin.firestore();
   } catch (error) {
