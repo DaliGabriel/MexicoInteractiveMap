@@ -22,13 +22,30 @@ type BlogPost = {
   };
 };
 
-// Fetch blog posts directly in the component (this is now an async component)
-export default async function Home() {
-  const snapshot = await db.collection("blogContent").get();
+// Server component that accepts `searchParams` directly
+export default async function Home({
+  searchParams,
+}: {
+  searchParams?: { category?: string };
+}) {
+  const category = searchParams?.category;
+
+  // Build the Firestore query based on the `category` parameter
+  let query = db
+    .collection("blogContent")
+    .select("slug", "title", "mainImageSrc", "date", "introduction")
+    .limit(10);
+
+  if (category) {
+    query = query.where("category", "==", category);
+  }
+
+  // Fetch posts from Firestore
+  const snapshot = await query.get();
   const blogPosts = snapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
-  })) as BlogPost[]; // Make sure it conforms to your BlogPost type
+  })) as BlogPost[];
 
   return (
     <div className="flex flex-col h-screen text-slate-800 break-words">
@@ -43,7 +60,7 @@ export default async function Home() {
                 ImageUrl={post.mainImageSrc}
                 BlogTitle={post.title}
                 BlogDate={post.date}
-                BlogSummarize={post.introduction.slice(0, 150) + "..."} // Short summary from introduction
+                BlogSummarize={post.introduction.slice(0, 150) + "..."}
               />
             ))}
           </div>

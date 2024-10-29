@@ -30,7 +30,7 @@ const CardBlogPost = ({
         <div className="rounded shadow-md bg-white dark:bg-gray-800 flex flex-col">
           {/* Image with max-height */}
           <div
-            className="relative w-full"
+            className="relative w-full mb-5"
             style={{ maxHeight: "200px", height: "200px" }}
           >
             <Image
@@ -44,7 +44,7 @@ const CardBlogPost = ({
           <div className="px-6 py-5 flex flex-col justify-between">
             {/* Title and Date Block */}
             <div>
-              <div className="font-semibold text-lg mb-2 text-slate-900 dark:text-slate-100">
+              <div className="font-semibold text-lg mb-5 text-slate-900 dark:text-slate-100">
                 {BlogTitle}
               </div>
               <p

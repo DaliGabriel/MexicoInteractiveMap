@@ -10,6 +10,7 @@ type BlogPost = {
   date: string;
   mainImageSrc: string;
   introduction: string;
+  category: string;
   sections: {
     title: string;
     imageSrc: string;
@@ -26,6 +27,7 @@ const BlogForm = () => {
     date: "",
     mainImageSrc: "",
     introduction: "",
+    category: "",
     sections: [{ title: "", imageSrc: "", imageAlt: "", content: [""] }],
     conclusion: { content: [""] },
   });
@@ -38,6 +40,14 @@ const BlogForm = () => {
     setFormData({
       ...formData,
       [field]: e.target.value,
+    });
+  };
+
+  // Handle category selection
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      category: e.target.value,
     });
   };
 
@@ -135,6 +145,7 @@ const BlogForm = () => {
       onSubmit={handleSubmit}
       className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg"
     >
+      {/* Slug */}
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700 mb-1">
           Slug:
@@ -148,6 +159,7 @@ const BlogForm = () => {
         />
       </div>
 
+      {/* Title */}
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700 mb-1">
           Title:
@@ -161,6 +173,7 @@ const BlogForm = () => {
         />
       </div>
 
+      {/* Date */}
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700 mb-1">
           Date:
@@ -174,6 +187,7 @@ const BlogForm = () => {
         />
       </div>
 
+      {/* Main Image URL */}
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700 mb-1">
           Main Image URL:
@@ -187,6 +201,7 @@ const BlogForm = () => {
         />
       </div>
 
+      {/* Introduction */}
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700 mb-1">
           Introduction:
@@ -197,6 +212,27 @@ const BlogForm = () => {
           required
           className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
         />
+      </div>
+
+      {/* Category Selection */}
+      <div className="mb-6">
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Category:
+        </label>
+        <select
+          value={formData.category}
+          onChange={handleCategoryChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+        >
+          <option value="" disabled>
+            Select a category
+          </option>
+          <option value="Sports">Sports</option>
+          <option value="Culture">Culture</option>
+          <option value="News & Updates">News & Updates</option>
+          <option value="Travel & Activities">Travel & Activities</option>
+        </select>
       </div>
 
       {/* Sections */}
@@ -312,6 +348,7 @@ const BlogForm = () => {
         </button>
       </div>
 
+      {/* Upload blog post */}
       <button
         type="submit"
         className="bg-green-500 text-white font-semibold px-6 py-2 rounded-md hover:bg-green-600"
