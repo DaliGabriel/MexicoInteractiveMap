@@ -39,18 +39,22 @@ const Page = () => {
 
         <input
           type="text"
+          name="username"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          autoComplete="username" // Enable autocomplete for username
         />
 
         <input
           type="password"
+          name="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          autoComplete="current-password"
         />
 
         <button

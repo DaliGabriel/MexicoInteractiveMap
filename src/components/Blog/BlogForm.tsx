@@ -20,6 +20,33 @@ type BlogPost = {
   conclusion: { content: string[] };
 };
 
+// Spanish month names for formatting
+const monthNames = [
+  "enero",
+  "febrero",
+  "marzo",
+  "abril",
+  "mayo",
+  "junio",
+  "julio",
+  "agosto",
+  "septiembre",
+  "octubre",
+  "noviembre",
+  "diciembre",
+];
+
+// Function to format date
+const getFormattedDate = () => {
+  const now = new Date();
+  const day = now.getDate();
+  const month = monthNames[now.getMonth()];
+  const year = now.getFullYear();
+  const hours = now.getHours();
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  return `${day} ${month} ${year} ${hours}:${minutes}`;
+};
+
 const BlogForm = () => {
   const [formData, setFormData] = useState<BlogPost>({
     slug: "",
@@ -59,6 +86,12 @@ const BlogForm = () => {
   ) => {
     const updatedSections = [...formData.sections];
     updatedSections[index][field] = e.target.value; // Use the union type here
+
+    // If the field being updated is "title", also update "imageAlt" with the same value
+    if (field === "title") {
+      updatedSections[index].imageAlt = e.target.value;
+    }
+
     setFormData({ ...formData, sections: updatedSections });
   };
 
@@ -119,13 +152,19 @@ const BlogForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Set the date field with formatted date before sending
+    const updatedFormData = {
+      ...formData,
+      date: getFormattedDate(),
+    };
+
     try {
       const response = await fetch("/api/addBlogPost", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(updatedFormData),
       });
 
       if (response.ok) {
@@ -168,20 +207,6 @@ const BlogForm = () => {
           type="text"
           value={formData.title}
           onChange={(e) => handleChange(e, "title")}
-          required
-          className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-        />
-      </div>
-
-      {/* Date */}
-      <div className="mb-6">
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Date:
-        </label>
-        <input
-          type="text"
-          value={formData.date}
-          onChange={(e) => handleChange(e, "date")}
           required
           className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
         />
@@ -265,21 +290,6 @@ const BlogForm = () => {
                 value={section.imageSrc}
                 onChange={(e) =>
                   handleSectionChange(sectionIndex, e, "imageSrc")
-                }
-                required
-                className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Section Image Alt:
-              </label>
-              <input
-                type="text"
-                value={section.imageAlt}
-                onChange={(e) =>
-                  handleSectionChange(sectionIndex, e, "imageAlt")
                 }
                 required
                 className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
