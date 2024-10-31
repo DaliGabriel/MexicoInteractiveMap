@@ -5,10 +5,10 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    const { slug, title, date, mainImageSrc, introduction, category, sections, conclusion } = data;
+    const { slug, title, date, dateTimestamp,mainImageSrc, introduction, category, sections, conclusion } = data;
 
     // Validate required fields
-    if (!slug || !title || !date || !mainImageSrc || !introduction ||  !category || !sections || !conclusion) {
+    if (!slug || !title || !date || !dateTimestamp || !mainImageSrc || !introduction ||  !category || !sections || !conclusion) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
@@ -17,6 +17,7 @@ export async function POST(request: Request) {
       slug,
       title,
       date,
+      dateTimestamp,
       mainImageSrc,
       introduction,
       category,

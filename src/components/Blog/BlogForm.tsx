@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Timestamp } from "firebase/firestore";
 
 // Define the types for the section and the blog post
 type SectionField = "title" | "imageSrc" | "imageAlt"; // Union type for section fields
@@ -8,6 +9,7 @@ type BlogPost = {
   slug: string;
   title: string;
   date: string;
+  dateTimestamp: Timestamp;
   mainImageSrc: string;
   introduction: string;
   category: string;
@@ -52,6 +54,7 @@ const BlogForm = () => {
     slug: "",
     title: "",
     date: "",
+    dateTimestamp: Timestamp.fromDate(new Date()),
     mainImageSrc: "",
     introduction: "",
     category: "",
@@ -153,9 +156,11 @@ const BlogForm = () => {
     e.preventDefault();
 
     // Set the date field with formatted date before sending
+    const now = new Date();
     const updatedFormData = {
       ...formData,
       date: getFormattedDate(),
+      dateTimestamp: Timestamp.fromDate(now),
     };
 
     try {

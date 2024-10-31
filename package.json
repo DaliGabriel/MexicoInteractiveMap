@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
+    "firebase": "^11.0.1",
     "firebase-admin": "^12.7.0",
     "isomorphic-dompurify": "^2.16.0",
     "leaflet": "^1.9.4",

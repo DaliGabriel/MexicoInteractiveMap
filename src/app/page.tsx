@@ -34,6 +34,7 @@ export default async function Home({
   let query = db
     .collection("blogContent")
     .select("slug", "title", "mainImageSrc", "date", "introduction")
+    .orderBy("dateTimestamp", "desc")
     .limit(10);
 
   if (category) {
