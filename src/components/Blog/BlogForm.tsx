@@ -159,6 +159,7 @@ const BlogForm = () => {
     };
 
     try {
+      
       const response = await fetch("/api/addBlogPost", {
         method: "POST",
         headers: {
@@ -246,7 +247,7 @@ const BlogForm = () => {
         </label>
         <select
           value={formData.category}
-          onChange={handleCategoryChange}
+          onChange={(e) => handleCategoryChange(e)}
           required
           className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
         >
