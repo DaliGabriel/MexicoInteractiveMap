@@ -60,13 +60,13 @@ export default function Header() {
               <div className="border-t border-gray-300 dark:border-gray-600"></div>
 
               <button
-                onClick={() => handleCategorySelect("Travel & Activities")}
+                onClick={() => handleCategorySelect("TravelActivities")}
                 className="block w-full text-left px-4 py-2 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600"
               >
                 Travel & Activities
               </button>
               <button
-                onClick={() => handleCategorySelect("News & Updates")}
+                onClick={() => handleCategorySelect("NewsUpdates")}
                 className="block w-full text-left px-4 py-2 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600"
               >
                 News & Updates

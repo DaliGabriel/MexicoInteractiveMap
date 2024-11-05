@@ -261,8 +261,8 @@ const BlogForm = () => {
           </option>
           <option value="Sports">Sports</option>
           <option value="Culture">Culture</option>
-          <option value="News & Updates">News & Updates</option>
-          <option value="Travel & Activities">Travel & Activities</option>
+          <option value="NewsUpdates">News & Updates</option>
+          <option value="TravelActivities">Travel & Activities</option>
         </select>
       </div>
 

@@ -35,7 +35,7 @@ export default async function Home({
     .collection("blogContent")
     .select("slug", "title", "mainImageSrc", "date", "introduction")
     .orderBy("dateTimestamp", "desc")
-    .limit(10);
+    .limit(9);
 
   if (category) {
     query = query.where("category", "==", category);
