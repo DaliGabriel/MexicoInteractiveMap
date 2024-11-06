@@ -53,7 +53,7 @@ export default function Header() {
             >
               {/* Dropdown Header */}
               <div className="px-4 py-2 text-gray-600 dark:text-gray-300 font-semibold">
-                Categories
+              Categorías
               </div>
 
               {/* Divider Line */}
@@ -63,25 +63,25 @@ export default function Header() {
                 onClick={() => handleCategorySelect("TravelActivities")}
                 className="block w-full text-left px-4 py-2 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600"
               >
-                Travel & Activities
+                Viajes
               </button>
               <button
                 onClick={() => handleCategorySelect("NewsUpdates")}
                 className="block w-full text-left px-4 py-2 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600"
               >
-                News & Updates
+                Noticias
               </button>
               <button
                 onClick={() => handleCategorySelect("Culture")}
                 className="block w-full text-left px-4 py-2 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600"
               >
-                Culture
+                Cultura
               </button>
               <button
                 onClick={() => handleCategorySelect("Sports")}
                 className="block w-full text-left px-4 py-2 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600"
               >
-                Sports
+                Deportes
               </button>
             </div>
           )}
