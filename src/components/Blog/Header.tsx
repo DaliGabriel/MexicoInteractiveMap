@@ -21,6 +21,7 @@ export default function Header() {
   return (
     <header className="bg-white dark:bg-gray-800 w-full px-6 py-5 sticky top-0 shadow-md dark:shadow-gray-900 z-50">
       <div className="flex justify-between items-center relative">
+        
         {/* Left Icon */}
         <Link href={"/interactive-map"}>
           <FaMap
