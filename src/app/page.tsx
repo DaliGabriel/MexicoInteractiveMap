@@ -48,7 +48,6 @@ export default async function Home({
     ...doc.data(),
   })) as BlogPost[];
 
-
   // Custom date parsing and sorting
   const sortedBlogPosts = blogPosts.sort((a, b) => {
     // Parse the date string into a Date object
@@ -56,16 +55,16 @@ export default async function Home({
       // Handle different date format variations
       // Remove any extra spaces and normalize month names
       const normalizedDate = dateString
-        .replace(/\s+/g, ' ')
-        .replace('noviembre', 'November')
-        .replace('octubre', 'October');
-      
+        .replace(/\s+/g, " ")
+        .replace("noviembre", "November")
+        .replace("octubre", "October");
+
       return new Date(normalizedDate);
     };
 
     const dateA = parseDate(a.date);
     const dateB = parseDate(b.date);
-    
+
     // Sort in descending order (most recent first)
     return dateB.getTime() - dateA.getTime();
   });

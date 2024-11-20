@@ -23,26 +23,23 @@ const CardBlogPost = ({
 
   return (
     <>
-      <Link
-        className="w-full sm:w-1/2 md:w-1/3 self-stretch p-2 mb-2"
-        href={`/blog/${slug}`}
-      >
-        <div className="rounded shadow-md bg-white dark:bg-gray-800 flex flex-col">
-          {/* Image with max-height */}
+      <Link className="w-full sm:w-1/2 md:w-1/3 p-2" href={`/blog/${slug}`}>
+        <div className="rounded shadow-md bg-white dark:bg-gray-800 flex flex-col h-full">
+          {/* Image Section */}
           <div
             className="relative w-full mb-5"
             style={{ maxHeight: "200px", height: "200px" }}
           >
             <Image
-              className="w-full h-full object-cover rounded-t" // Ensures the image covers the container
+              className="w-full h-full object-cover rounded-t"
               src={ImageUrl}
-              fill // Dynamically fills the parent container
+              fill
               alt={`Image about ${slug}`}
               priority
             />
           </div>
-          <div className="px-6 py-5 flex flex-col justify-between">
-            {/* Title and Date Block */}
+          {/* Content Section */}
+          <div className="px-6 py-5 flex flex-col justify-between flex-grow">
             <div>
               <div className="font-semibold text-lg mb-5 text-slate-900 dark:text-slate-100">
                 {BlogTitle}
@@ -54,8 +51,6 @@ const CardBlogPost = ({
                 {BlogDate}
               </p>
             </div>
-
-            {/* Blog Content */}
             <p
               className="text-slate-800 dark:text-slate-300 mt-4"
               dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
