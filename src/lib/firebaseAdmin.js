@@ -44,7 +44,6 @@ function initializeFirebase() {
     throw error;
   }
 }
-
 // Initialize Firebase and get Firestore instance
 const db = initializeFirebase();
 
