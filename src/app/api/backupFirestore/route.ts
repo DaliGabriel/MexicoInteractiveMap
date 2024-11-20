@@ -10,7 +10,7 @@ export async function GET() {
       return NextResponse.json({ error: 'No documents found in the collection.' }, { status: 404 });
     }
 
-    let data: Record<string, any> = {};
+    const data: Record<string, unknown> = {};
     snapshot.forEach((doc) => {
       data[doc.id] = doc.data();
     });
