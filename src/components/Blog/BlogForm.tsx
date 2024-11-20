@@ -164,7 +164,6 @@ const BlogForm = () => {
     };
 
     try {
-      
       const response = await fetch("/api/addBlogPost", {
         method: "POST",
         headers: {
