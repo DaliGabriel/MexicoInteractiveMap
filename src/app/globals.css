@@ -42,7 +42,7 @@ ul {
   margin: 16px 0; /* Add space around the list */
   font-family: "Georgia", serif; /* A classic, elegant font */
   font-size: 1.1rem; /* Slightly larger font for better legibility */
-  color: #4a5568; /* Neutral dark color for text */
+  color: #e7f0fd; /* Neutral dark color for text */
 }
 
 li {
@@ -90,4 +90,37 @@ ul li strong {
 
 ul li:hover strong {
   text-decoration: underline; /* Underline strong text on hover */
+}
+
+/* Dark mode styles */
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  ul {
+    color: #d1d5db; /* Lighter text color for better readability */
+  }
+
+  li:nth-child(odd)::before {
+    content: "🌮"; /* Taco for odd items */
+    color: #fbbf24; /* Vibrant yellow for visibility */
+  }
+
+  li:nth-child(even)::before {
+    content: "🌵"; /* Cactus for even items */
+    color: #10b981; /* Bright green for dark mode contrast */
+  }
+
+  li:hover {
+    background-color: #374151; /* Darker gray background for hover effect */
+    border-radius: 4px; /* Keep rounded corners */
+    padding-left: 1.7em; /* Maintain alignment */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+
+  ul li strong {
+    color: #f3f4f6; /* Almost white for strong text to stand out */
+  }
+
+  ul li:hover strong {
+    text-decoration: underline; /* Maintain underline on hover */
+  }
 }
