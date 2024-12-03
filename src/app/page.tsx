@@ -33,9 +33,7 @@ export default async function Home({
   // Build the Firestore query based on the `category` parameter
   let query = db
     .collection("blogContent")
-    .select("slug", "title", "mainImageSrc", "date", "introduction")
-    .orderBy("dateTimestamp", "desc")
-    .limit(9);
+    .select("slug", "title", "mainImageSrc", "date", "introduction");
 
   if (category) {
     query = query.where("category", "==", category);
@@ -43,31 +41,52 @@ export default async function Home({
 
   // Fetch posts from Firestore
   const snapshot = await query.get();
+
   const blogPosts = snapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   })) as BlogPost[];
 
+  console.log(blogPosts);
+
   // Custom date parsing and sorting
-  const sortedBlogPosts = blogPosts.sort((a, b) => {
-    // Parse the date string into a Date object
-    const parseDate = (dateString: string) => {
-      // Handle different date format variations
-      // Remove any extra spaces and normalize month names
-      const normalizedDate = dateString
-        .replace(/\s+/g, " ")
-        .replace("noviembre", "November")
-        .replace("octubre", "October");
+  const sortedBlogPosts = blogPosts
+    .sort((a, b) => {
+      // Parse the date string into a Date object
+      const parseDate = (dateString: string) => {
+        // Mapping of Spanish month names to English
+        const months: Record<string, string> = {
+          enero: "January",
+          febrero: "February",
+          marzo: "March",
+          abril: "April",
+          mayo: "May",
+          junio: "June",
+          julio: "July",
+          agosto: "August",
+          septiembre: "September",
+          octubre: "October",
+          noviembre: "November",
+          diciembre: "December",
+        };
 
-      return new Date(normalizedDate);
-    };
+        // Replace Spanish month name with English equivalent
+        const normalizedDate = dateString.replace(
+          /\b(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\b/gi,
+          (match) => months[match.toLowerCase() as keyof typeof months]
+        );
 
-    const dateA = parseDate(a.date);
-    const dateB = parseDate(b.date);
+        // Remove extra spaces and parse the normalized date
+        return new Date(normalizedDate.replace(/\s+/g, " "));
+      };
 
-    // Sort in descending order (most recent first)
-    return dateB.getTime() - dateA.getTime();
-  });
+      const dateA = parseDate(a.date);
+      const dateB = parseDate(b.date);
+
+      // Sort in descending order (most recent first)
+      return dateB.getTime() - dateA.getTime();
+    })
+    .slice(0, 9);
 
   return (
     <div className="flex flex-col h-screen text-slate-800 break-words">
