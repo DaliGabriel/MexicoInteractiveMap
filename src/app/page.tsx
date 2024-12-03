@@ -33,7 +33,9 @@ export default async function Home({
   // Build the Firestore query based on the `category` parameter
   let query = db
     .collection("blogContent")
-    .select("slug", "title", "mainImageSrc", "date", "introduction");
+    .select("slug", "title", "mainImageSrc", "date", "introduction")
+    .orderBy("date") // Optional, Firestore may order lexicographically
+    .limit(50); // Fetch more than needed;
 
   if (category) {
     query = query.where("category", "==", category);
@@ -46,8 +48,6 @@ export default async function Home({
     id: doc.id,
     ...doc.data(),
   })) as BlogPost[];
-
-  console.log(blogPosts);
 
   // Custom date parsing and sorting
   const sortedBlogPosts = blogPosts
