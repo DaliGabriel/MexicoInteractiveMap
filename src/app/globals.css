@@ -34,3 +34,60 @@ body {
   margin-top: 0px;
   margin-bottom: 0.75rem;
 }
+
+ul {
+  list-style-type: none; /* Remove default bullets */
+  list-style-position: outside; /* Position bullet outside for a clean look */
+  padding-left: 20px; /* Indent for better readability */
+  margin: 16px 0; /* Add space around the list */
+  font-family: "Georgia", serif; /* A classic, elegant font */
+  font-size: 1.1rem; /* Slightly larger font for better legibility */
+  color: #4a5568; /* Neutral dark color for text */
+}
+
+li {
+  margin-bottom: 12px; /* Space between list items */
+  line-height: 1.6; /* Improve readability */
+  position: relative; /* For custom bullet styling */
+  padding-left: 1.5em; /* Indent text for custom bullets */
+}
+
+/* Style for odd list items */
+li:nth-child(odd)::before {
+  content: "🌮"; /* Taco for odd items */
+  color: #ff7043; /* Eye-catching orange for tacos */
+  font-size: 1.2rem; /* Slightly larger for emphasis */
+  position: absolute;
+  left: 0; /* Position to the left of the text */
+  top: 0;
+  transform: translateY(4px); /* Align vertically */
+}
+
+/* Style for even list items */
+li:nth-child(even)::before {
+  content: "🌵"; /* Cactus for even items */
+  color: #38b2ac; /* Calming teal for cacti */
+  font-size: 1.2rem; /* Match font size */
+  position: absolute;
+  left: 0; /* Position to the left of the text */
+  top: 0;
+  transform: translateY(4px); /* Align vertically */
+}
+
+/* Hover effect for list items */
+li:hover {
+  background-color: #f0fff4; /* Light green background on hover */
+  border-radius: 4px; /* Rounded corners */
+  padding-left: 1.7em; /* Adjust padding for alignment */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Style for strong text within list items */
+ul li strong {
+  color: #2d3748; /* Different color for strong text to make it stand out */
+  font-weight: bold; /* Emphasize strong text */
+}
+
+ul li:hover strong {
+  text-decoration: underline; /* Underline strong text on hover */
+}
