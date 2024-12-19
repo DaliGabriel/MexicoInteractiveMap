@@ -9,8 +9,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "México interactive map",
-  description: "Learn about México",
+  title: "México interactivo",
+  description: "Las ultimas noticias a cerca de México",
 };
 
 export default function RootLayout({

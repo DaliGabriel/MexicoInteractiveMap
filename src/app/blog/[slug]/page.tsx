@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import BlogPage from "@/components/Blog/BlogPage";
-import {db} from "../../../lib/firebaseAdmin";
+import { db } from "../../../lib/firebaseAdmin";
 import React from "react";
 import Head from "next/head";
 import BlogPostSchema from "@/components/Blog/BlogPostSchema";
@@ -71,7 +71,6 @@ const Page = async ({ params }: { params: { slug: string } }) => {
 
 // Fetch a single blog post by its slug from Firestore
 async function fetchBlogPostBySlug(slug: string): Promise<BlogPost | null> {
-
   const docRef = db.collection("blogContent").doc(slug); // Assuming slug is used as document ID
   const doc = await docRef.get();
 
@@ -81,7 +80,6 @@ async function fetchBlogPostBySlug(slug: string): Promise<BlogPost | null> {
 
   const data = doc.data() as BlogPost;
 
-
   // Add id if it's not already in the document data
   if (!data.id) {
     data.id = doc.id;
@@ -89,6 +87,5 @@ async function fetchBlogPostBySlug(slug: string): Promise<BlogPost | null> {
 
   return data;
 }
-
 
 export default Page;
