@@ -187,7 +187,7 @@ const BlogForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg"
+      className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg dark:text-black"
     >
       {/* Slug */}
       <div className="mb-6">
