@@ -3,7 +3,7 @@ import Footer from "@/components/Blog/Footer";
 import Header from "@/components/Blog/Header";
 import { db } from "@/lib/firebaseAdmin";
 
-// Define the BlogPost type (same as in your other components)
+// Define the BlogPost type
 type BlogPost = {
   id: string;
   slug: string;
