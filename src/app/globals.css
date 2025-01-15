@@ -93,7 +93,6 @@ ul li:hover strong {
 }
 
 /* Dark mode styles */
-/* Dark mode styles */
 @media (prefers-color-scheme: dark) {
   ul {
     color: #d1d5db; /* Lighter text color for better readability */
@@ -122,5 +121,20 @@ ul li:hover strong {
 
   ul li:hover strong {
     text-decoration: underline; /* Maintain underline on hover */
+  }
+
+  input,
+  textarea,
+  select {
+    color: var(--foreground);
+    background-color: var(--background);
+    border-color: var(--foreground);
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: #818cf8; /* Lighter indigo for dark mode */
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
   }
 }
