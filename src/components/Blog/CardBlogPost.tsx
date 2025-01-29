@@ -25,7 +25,7 @@ const CardBlogPost = ({
     <>
       <Link className="w-full sm:w-1/2 md:w-1/3 p-2" href={`/blog/${slug}`}>
         <div className="rounded shadow-md bg-white dark:bg-gray-800 flex flex-col h-full">
-          {/* Image Section */}
+          {/* Image Section xx */}
           <div
             className="relative w-full mb-5"
             style={{ maxHeight: "200px", height: "200px" }}
