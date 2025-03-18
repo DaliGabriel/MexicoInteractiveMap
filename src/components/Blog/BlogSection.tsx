@@ -5,7 +5,7 @@ type BlogSectionProps = {
   title: string;
   imageSrc: string;
   imageAlt: string;
-  content: string[];
+  content: string;
 };
 
 const BlogSection = ({
@@ -24,13 +24,14 @@ const BlogSection = ({
         src={imageSrc}
         alt={imageAlt}
         width={960}
-        height={500} 
+        height={500}
       />
     </div>
     {/* Iterate over the content array and render each paragraph */}
-    {content.map((paragraph, index) => (
-      <p key={index} className="text-center mt-10" dangerouslySetInnerHTML={{ __html: paragraph }}></p>
-    ))}
+    <p
+      className="text-center mt-10"
+      dangerouslySetInnerHTML={{ __html: content }}
+    ></p>
   </section>
 );
 

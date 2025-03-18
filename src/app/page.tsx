@@ -15,10 +15,10 @@ type BlogPost = {
     title: string;
     imageSrc: string;
     imageAlt: string;
-    content: string[];
+    content: string;
   }[];
   conclusion: {
-    content: string[];
+    content: string;
   };
 };
 
