@@ -35,6 +35,12 @@ body {
   margin-bottom: 0.75rem;
 }
 
+h1,
+a,
+p {
+  text-align: center;
+}
+
 ul {
   list-style-type: none; /* Remove default bullets */
   list-style-position: outside; /* Position bullet outside for a clean look */
