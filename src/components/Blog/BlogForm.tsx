@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import { Timestamp } from "firebase/firestore";
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css"; // Quill styles
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 // Define the types for the section and the blog post
 type SectionField = "title" | "imageSrc" | "imageAlt"; // Union type for section fields
@@ -17,36 +21,15 @@ type BlogPost = {
     title: string;
     imageSrc: string;
     imageAlt: string;
-    content: string[];
+    content: string;
   }[];
-  conclusion: { content: string[] };
+  conclusion: string;
 };
-
-// Spanish month names for formatting
-const monthNames = [
-  "enero",
-  "febrero",
-  "marzo",
-  "abril",
-  "mayo",
-  "junio",
-  "julio",
-  "agosto",
-  "septiembre",
-  "octubre",
-  "noviembre",
-  "diciembre",
-];
 
 // Function to format date
 const getFormattedDate = () => {
   const now = new Date();
-  const day = now.getDate();
-  const month = monthNames[now.getMonth()];
-  const year = now.getFullYear();
-  const hours = now.getHours();
-  const minutes = now.getMinutes().toString().padStart(2, "0");
-  return `${day} ${month} ${year} ${hours}:${minutes}`;
+  return now.toLocaleString("es-MX", { dateStyle: "long", timeStyle: "short" });
 };
 
 const BlogForm = () => {
@@ -58,21 +41,34 @@ const BlogForm = () => {
     mainImageSrc: "",
     introduction: "",
     category: "",
-    sections: [{ title: "", imageSrc: "", imageAlt: "", content: [""] }],
-    conclusion: { content: [""] },
+    sections: [{ title: "", imageSrc: "", imageAlt: "", content: "" }],
+    conclusion: "",
   });
 
-  // Handle change for the regular fields (slug, title, date, etc.)
+  // Handle input changes for text fields
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement>,
     field: keyof BlogPost
   ) => {
-    setFormData({
-      ...formData,
-      [field]: e.target.value,
-    });
+    setFormData({ ...formData, [field]: e.target.value });
   };
 
+  // Handle Quill editor changes
+  const handleQuillChange = (value: string, sectionIndex?: number) => {
+    if (sectionIndex !== undefined) {
+      const updatedSections = [...formData.sections];
+      updatedSections[sectionIndex].content = value;
+      setFormData({ ...formData, sections: updatedSections });
+    } else {
+      setFormData({ ...formData, conclusion: value });
+    }
+  };
+
+  // Handle introduction separately
+  // Separate handler for Introduction
+  const handleIntroductionChange = (value: string) => {
+    setFormData({ ...formData, introduction: value });
+  };
   // Handle category selection
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFormData({
@@ -84,7 +80,7 @@ const BlogForm = () => {
   // Handle section change
   const handleSectionChange = (
     index: number,
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement>,
     field: SectionField
   ) => {
     const updatedSections = [...formData.sections];
@@ -98,88 +94,44 @@ const BlogForm = () => {
     setFormData({ ...formData, sections: updatedSections });
   };
 
-  // Handle section content change
-  const handleSectionContentChange = (
-    sectionIndex: number,
-    contentIndex: number,
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    const updatedSections = [...formData.sections];
-    updatedSections[sectionIndex].content[contentIndex] = e.target.value;
-    setFormData({ ...formData, sections: updatedSections });
-  };
-
   // Handle adding new section
   const addSection = () => {
     setFormData({
       ...formData,
       sections: [
         ...formData.sections,
-        { title: "", imageSrc: "", imageAlt: "", content: [""] },
+        { title: "", imageSrc: "", imageAlt: "", content: "" },
       ],
     });
   };
 
   // Handle removing a section
   const removeSection = (index: number) => {
-    const updatedSections = formData.sections.filter((_, i) => i !== index);
-    setFormData({ ...formData, sections: updatedSections });
-  };
-
-  // Handle conclusion change
-  const handleConclusionChange = (
-    index: number,
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    const updatedConclusion = [...formData.conclusion.content];
-    updatedConclusion[index] = e.target.value;
-    setFormData({ ...formData, conclusion: { content: updatedConclusion } });
-  };
-
-  // Add new conclusion content
-  const addConclusion = () => {
     setFormData({
       ...formData,
-      conclusion: { content: [...formData.conclusion.content, ""] },
+      sections: formData.sections.filter((_, i) => i !== index),
     });
-  };
-
-  // Remove conclusion content
-  const removeConclusion = (index: number) => {
-    const updatedConclusion = formData.conclusion.content.filter(
-      (_, i) => i !== index
-    );
-    setFormData({ ...formData, conclusion: { content: updatedConclusion } });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Set the date field with formatted date before sending
-    const now = new Date();
     const updatedFormData = {
       ...formData,
       date: getFormattedDate(),
-      dateTimestamp: Timestamp.fromDate(now),
+      dateTimestamp: Timestamp.fromDate(new Date()),
     };
 
     try {
       const response = await fetch("/api/addBlogPost", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedFormData),
       });
 
-      if (response.ok) {
-        alert("Blog post uploaded successfully!");
-      } else {
-        const { error } = await response.json();
-        alert(`Error: ${error}`);
-      }
+      if (response.ok) alert("Blog post uploaded successfully!");
+      else alert("Error uploading post.");
     } catch (error) {
-      console.error("Error uploading blog post:", error);
+      console.error("Upload failed:", error);
       alert("Failed to upload blog post.");
     }
   };
@@ -217,7 +169,7 @@ const BlogForm = () => {
         />
       </div>
 
-      {/* Main Image URL */}
+      {/* Main Image*/}
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700 mb-1">
           Main Image URL:
@@ -236,11 +188,10 @@ const BlogForm = () => {
         <label className="block text-sm font-medium text-gray-700 mb-1">
           Introduction:
         </label>
-        <textarea
+        <ReactQuill
           value={formData.introduction}
-          onChange={(e) => handleChange(e, "introduction")}
-          required
-          className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+          onChange={(value) => handleIntroductionChange(value)}
+          className="bg-white"
         />
       </div>
 
@@ -303,18 +254,14 @@ const BlogForm = () => {
 
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Section Content:
+                Content:
               </label>
-              {section.content.map((content, contentIndex) => (
-                <textarea
-                  key={contentIndex}
-                  value={content}
-                  onChange={(e) =>
-                    handleSectionContentChange(sectionIndex, contentIndex, e)
-                  }
-                  className="w-full p-2 mb-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              ))}
+              <ReactQuill
+                key={sectionIndex}
+                value={section.content}
+                onChange={(value) => handleQuillChange(value, sectionIndex)} // Correct usage
+                className="bg-white"
+              />
             </div>
 
             <button
@@ -338,29 +285,11 @@ const BlogForm = () => {
       {/* Conclusion */}
       <div className="mb-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Conclusion</h3>
-        {formData.conclusion.content.map((content, contentIndex) => (
-          <div key={contentIndex} className="mb-4">
-            <textarea
-              value={content}
-              onChange={(e) => handleConclusionChange(contentIndex, e)}
-              className="w-full p-2 mb-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-            />
-            <button
-              type="button"
-              onClick={() => removeConclusion(contentIndex)}
-              className="text-red-500 font-medium hover:text-red-700"
-            >
-              Remove Conclusion
-            </button>
-          </div>
-        ))}
-        <button
-          type="button"
-          onClick={addConclusion}
-          className="bg-indigo-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-indigo-600"
-        >
-          Add Conclusion Content
-        </button>
+        <ReactQuill
+          value={formData.conclusion}
+          onChange={(value) => handleQuillChange(value)}
+          className="bg-white"
+        />
       </div>
 
       {/* Upload blog post */}
