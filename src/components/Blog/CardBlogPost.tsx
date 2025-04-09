@@ -18,7 +18,7 @@ const CardBlogPost = ({
   BlogDate,
   BlogSummarize,
 }: CardBlogPostProps) => {
-  //Void problems with ssr with next and prevent xxs atacks lol
+  //Avoid problems with ssr with next and prevent xxs atacks
   const sanitizedHTML = DOMPurify.sanitize(BlogSummarize);
 
   return (

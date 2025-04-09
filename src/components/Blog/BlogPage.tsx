@@ -1,8 +1,7 @@
-import React from "react";
-import Header from "./Header";
-import Footer from "./Footer";
 import Image from "next/image";
 import BlogSection from "./BlogSection";
+import Footer from "./Footer";
+import Header from "./Header";
 
 type BlogPageProps = {
   title: string;
@@ -15,7 +14,9 @@ type BlogPageProps = {
     imageAlt: string;
     content: string;
   }[];
-  conclusion: string;
+  conclusion: {
+    content: string | string[];
+  };
 };
 
 const BlogPage = ({
@@ -70,12 +71,23 @@ const BlogPage = ({
           </div>
 
           {/* Render conclusion */}
-          <footer>
-            <h2 className="text-2xl text-center font-bold leading-normal text-slate-900 dark:text-slate-100 mt-0 mb-3">
-              Conclusión:
-            </h2>
-            <p dangerouslySetInnerHTML={{ __html: conclusion }}></p>
-          </footer>
+          {conclusion && (
+            <footer>
+              <h2 className="text-2xl text-center font-bold leading-normal text-slate-900 dark:text-slate-100 mt-0 mb-3">
+                Conclusión:
+              </h2>
+              {Array.isArray(conclusion.content) ? (
+                conclusion.content.map((paragraph, index) => (
+                  <p
+                    key={index}
+                    dangerouslySetInnerHTML={{ __html: paragraph }}
+                  ></p>
+                ))
+              ) : (
+                <p dangerouslySetInnerHTML={{ __html: conclusion.content }}></p>
+              )}
+            </footer>
+          )}
         </article>
       </main>
       <Footer />

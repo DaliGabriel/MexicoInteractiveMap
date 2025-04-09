@@ -19,7 +19,9 @@ type BlogPost = {
     imageAlt: string;
     content: string;
   }[];
-  conclusion: string;
+  conclusion: {
+    content: string | string[];
+  };
 };
 
 // Generate dynamic metadata based on the post data
