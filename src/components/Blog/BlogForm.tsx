@@ -5,7 +5,21 @@ import { Timestamp } from "firebase/firestore";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css"; // Quill styles
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+const ReactQuill = dynamic(
+  () => {
+    return import("react-quill").then((mod) => {
+      if (typeof window !== "undefined") {
+        try {
+          import("react-quill/dist/quill.snow.css");
+        } catch (e) {
+          console.warn("Failed to load Quill CSS", e);
+        }
+      }
+      return mod;
+    });
+  },
+  { ssr: false }
+);
 
 // Define the types for the section and the blog post
 type SectionField = "title" | "imageSrc" | "imageAlt"; // Union type for section fields

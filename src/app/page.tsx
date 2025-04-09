@@ -33,9 +33,16 @@ export default async function Home({
   // Build the Firestore query based on the `category` parameter
   let query = db
     .collection("blogContent")
-    .select("slug", "title", "mainImageSrc", "date", "introduction")
-    .orderBy("date") // Optional, Firestore may order lexicographically
-    .limit(50); // Fetch more than needed;
+    .select(
+      "slug",
+      "title",
+      "mainImageSrc",
+      "date",
+      "introduction",
+      "dateTimestamp"
+    )
+    .orderBy("dateTimestamp", "desc") // Optional, Firestore may order lexicographically
+    .limit(100); // Fetch more than needed;
 
   if (category) {
     query = query.where("category", "==", category);
@@ -70,14 +77,20 @@ export default async function Home({
           diciembre: "December",
         };
 
-        // Replace Spanish month name with English equivalent
-        const normalizedDate = dateString.replace(
+        // Clean up: remove 'de', commas, and fix 'p.m.' / 'a.m.'
+        const cleaned = dateString
+          .toLowerCase()
+          .replace(/de/g, "")
+          .replace(/,/g, "")
+          .replace(/p\.m\./g, "PM")
+          .replace(/a\.m\./g, "AM");
+
+        const normalizedDate = cleaned.replace(
           /\b(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\b/gi,
           (match) => months[match.toLowerCase() as keyof typeof months]
         );
 
-        // Remove extra spaces and parse the normalized date
-        return new Date(normalizedDate.replace(/\s+/g, " "));
+        return new Date(normalizedDate.replace(/\s+/g, " ").trim());
       };
 
       const dateA = parseDate(a.date);
@@ -94,16 +107,18 @@ export default async function Home({
       <main className="mx-7 lg:mx-6 mt-10 flex-grow">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-wrap -mx-2">
-            {sortedBlogPosts.map((post) => (
-              <CardBlogPost
-                key={post.slug}
-                slug={post.slug}
-                ImageUrl={post.mainImageSrc}
-                BlogTitle={post.title}
-                BlogDate={post.date}
-                BlogSummarize={post.introduction.slice(0, 150) + "..."}
-              />
-            ))}
+            {sortedBlogPosts.map((post) => {
+              return (
+                <CardBlogPost
+                  key={post.slug}
+                  slug={post.slug}
+                  ImageUrl={post.mainImageSrc}
+                  BlogTitle={post.title}
+                  BlogDate={post.date}
+                  BlogSummarize={post.introduction.slice(0, 150) + "..."}
+                />
+              );
+            })}
           </div>
         </div>
       </main>
