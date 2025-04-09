@@ -11,11 +11,9 @@ type BlogPost = {
     title: string;
     imageSrc: string;
     imageAlt: string;
-    content: string[];
+    content: string;
   }[];
-  conclusion: {
-    content: string[];
-  };
+  conclusion: string;
 };
 
 const BlogPostSchema = ({ post }: { post: BlogPost }) => {

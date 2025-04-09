@@ -13,11 +13,9 @@ type BlogPageProps = {
     title: string;
     imageSrc: string;
     imageAlt: string;
-    content: string[];
+    content: string;
   }[];
-  conclusion: {
-    content: string[]; // Changed to an array of strings, as each item is a paragraph
-  };
+  conclusion: string;
 };
 
 const BlogPage = ({
@@ -76,9 +74,7 @@ const BlogPage = ({
             <h2 className="text-2xl text-center font-bold leading-normal text-slate-900 dark:text-slate-100 mt-0 mb-3">
               Conclusión:
             </h2>
-            {conclusion.content.map((paragraph, idx) => (
-              <p key={idx} dangerouslySetInnerHTML={{ __html: paragraph }}></p>
-            ))}
+            <p dangerouslySetInnerHTML={{ __html: conclusion }}></p>
           </footer>
         </article>
       </main>

@@ -35,6 +35,12 @@ body {
   margin-bottom: 0.75rem;
 }
 
+h1,
+a,
+p {
+  text-align: center;
+}
+
 ul {
   list-style-type: none; /* Remove default bullets */
   list-style-position: outside; /* Position bullet outside for a clean look */
@@ -54,7 +60,7 @@ li {
 
 /* Style for odd list items */
 li:nth-child(odd)::before {
-  content: "🌮"; /* Taco for odd items */
+  content: "🌮" !important; /* Taco for odd items */
   color: #ff7043; /* Eye-catching orange for tacos */
   font-size: 1.2rem; /* Slightly larger for emphasis */
   position: absolute;
@@ -65,7 +71,7 @@ li:nth-child(odd)::before {
 
 /* Style for even list items */
 li:nth-child(even)::before {
-  content: "🌵"; /* Cactus for even items */
+  content: "🌵" !important; /* Cactus for even items */
   color: #38b2ac; /* Calming teal for cacti */
   font-size: 1.2rem; /* Match font size */
   position: absolute;
@@ -99,12 +105,12 @@ ul li:hover strong {
   }
 
   li:nth-child(odd)::before {
-    content: "🌮"; /* Taco for odd items */
+    content: "🌮" !important; /* Taco for odd items */
     color: #fbbf24; /* Vibrant yellow for visibility */
   }
 
   li:nth-child(even)::before {
-    content: "🌵"; /* Cactus for even items */
+    content: "🌵" !important; /* Cactus for even items */
     color: #10b981; /* Bright green for dark mode contrast */
   }
 
