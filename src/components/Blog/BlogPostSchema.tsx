@@ -13,7 +13,9 @@ type BlogPost = {
     imageAlt: string;
     content: string;
   }[];
-  conclusion: string;
+  conclusion: {
+    content: string | string[];
+  };
 };
 
 const BlogPostSchema = ({ post }: { post: BlogPost }) => {
